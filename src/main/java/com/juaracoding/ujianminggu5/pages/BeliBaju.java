@@ -38,13 +38,13 @@ public class BeliBaju {
 	private WebElement btnBajuTshirt;
 	
 	
-	@FindBy(className = "product-name")
+	@FindBy(className = "navigation_page")
 	private WebElement txtProduk;
 	
 	@FindBy(className = "quantity_wanted")
 	private WebElement inputquantity;
 	
-	@FindBy(css= "#product > div > div > div.pb-center-column.col-xs-12.col-sm-4 > h1")
+	@FindBy(className= "cheque-indent")
 	private WebElement txtDetail;
 	
 	@FindBy(className= "fancybox-iframe")
@@ -62,6 +62,9 @@ public class BeliBaju {
 	@FindBy(id= "add_to_cart")
 	private WebElement btnAdd2;
 	
+//	@FindBy(id= "add_to_cart")
+//	private WebElement btnAdd3;
+	
 	@FindBy(css = "#layer_cart > div.clearfix > div.layer_cart_cart.col-xs-12.col-md-6 > div.button-container > a")
 	private WebElement btnProses;
 	
@@ -74,10 +77,42 @@ public class BeliBaju {
 	@FindBy(css = "#layer_cart > div.clearfix > div.layer_cart_cart.col-xs-12.col-md-6 > div.button-container > span > span")
 	private WebElement btnContinue1;
 	
+	@FindBy(css = "#layer_cart > div.clearfix > div.layer_cart_cart.col-xs-12.col-md-6 > div.button-container > span > span")
+	private WebElement btnContinue2;
+	
+	@FindBy(css = "#center_column > p.cart_navigation.clearfix > a.button.btn.btn-default.standard-checkout.button-medium")
+	private WebElement btnCheckout;
+	
+//	@FindBy(css = "#center_column > p.cart_navigation.clearfix > a.button.btn.btn-default.standard-checkout.button-medium")
+//	private WebElement btnCheckout1;
+	
+	@FindBy(xpath = "//*[@id=\"center_column\"]/form/p/button/span")
+	private WebElement btnCheckout2;
+	
+	@FindBy(xpath = "//*[@id=\"form\"]/p/button")
+	private WebElement btnCheckout3;
+	
+	@FindBy(className= "crow")
+	private WebElement bin;
+	
+	@FindBy(id = "cgv")
+	private WebElement rdButton;
+	
+	
+	@FindBy(xpath= "o//*[@id=\"ordermsg\"]/textarea")
+	private WebElement inputprom;
+	
+	
+	@FindBy(css = "#HOOK_PAYMENT > div:nth-child(1) > div > p > a")
+	private WebElement btnPayment;
+	
+	@FindBy(xpath = "//*[@id=\"cart_navigation\"]/button")
+	private WebElement btnConfirmPayment;
+	
+	
 	
 	public void pilihBaju() {
 		btnWomen.click();
-//		txtWomen.getText();
 		scroll(driver);
 		btnBajuWomen.click();
 		driver.switchTo().frame(bingkai);
@@ -94,12 +129,31 @@ public class BeliBaju {
 		driver.switchTo().defaultContent();
 		btnContinue1.click();
 		btnTshirt.click();
-		scroll(driver);
 		btnBajuTshirt.click();
 		driver.switchTo().frame(bingkai2);
+		btnAdd2.click();
+		driver.switchTo().defaultContent();
+		btnContinue2.click();
+		btnProses.click();
+		scroll(driver);
 
-//		btnAdd.click();
-//		btnCloseWomen.click();
+	}
+	
+	public void bayar(String prom) {
+		scroll(driver);
+		btnCheckout.click();
+		scroll(driver);
+//		inputprom.sendKeys(prom);
+		btnCheckout2.click();
+		scroll(driver);
+		rdButton.click();
+		btnCheckout3.click();
+		scroll(driver);
+		btnPayment.click();
+		scroll(driver);
+		btnConfirmPayment.click();
+		
+		
 	}
 	
 	public static void scroll(WebDriver driver) {
@@ -107,11 +161,11 @@ public class BeliBaju {
 		js.executeScript("scrollBy(0,1000)");
 	}
 
-	public String geTxtProduk() {
+	public String getTxtProduk() {
 		return txtProduk.getText();
 	}
 	
-//	public String getTxtDetail() {
-//		return txtDetail.getText();
-//	}
+	public String getTxtDetail() {
+		return txtDetail.getText();
+	}
 }

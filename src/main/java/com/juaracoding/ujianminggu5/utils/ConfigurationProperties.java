@@ -20,8 +20,8 @@ public class ConfigurationProperties {
 	@Value("${txtWelcome}")
 	private String txtWelcome;
 	
-	@Value("${quantity}")
-	private String quantity;
+	@Value("${porm}")
+	private String porm;
 	
 	@Value("${txtProduk}")
 	private String txtProduk;
@@ -29,14 +29,13 @@ public class ConfigurationProperties {
 	@Value("${txtDetail}")
 	private String txtDetail;
 	
-	
 
-	public String getQuantity() {
-		return quantity;
+	public String getPorm() {
+		return porm;
 	}
 
-	public void setQuantity(String quantity) {
-		this.quantity = quantity;
+	public void setPorm(String porm) {
+		this.porm = porm;
 	}
 
 	public String getTxtProduk() {

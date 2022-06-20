@@ -65,36 +65,32 @@ public class StepDefinition {
 	
 	@Then("Customer berhasil login")
 	public void customer_berhasil_login() {
-//		driver.navigate().refresh();
 		tunggu(2);
 		assertEquals(configurationProperties.getTxtWelcome(), loginPage.getTxtWelcome());
 	}
 	
 	@When("Customer menambah produk")
 	public void customer_menambah_produk() {
-//		driver.get(Constants.URL1);
 		beliBaju.pilihBaju();
 	}
 	
 	@Then("Customer berhasil menambah produk")
 	public void customer_berhasil_menambah_produk() {
-//		belibaju.pilihBaju(false);
 		tunggu(2);
-		assertEquals(configurationProperties.getTxtProduk(), beliBaju.geTxtProduk());
+		assertEquals(configurationProperties.getTxtProduk(), beliBaju.getTxtProduk());
 		
 	}
 	
-//	@When("Customer melihat detail dari baju yang dipilih")
-//	public void customer_melihat_detail_dari_baju_yang_dipilih() {
-//		driver.get(Constants.URL2);
-//		
-//	}
-//	
-//	@Then("Custer berhasil masuk ke detail baju yang dipilih")
-//	public void customer_berhasil_masuk_ke_detail_baju_yang_dipilih() {
-////		belibaju.pilihBaju(false);
-//		assertEquals(configurationProperties.getTxtDetail(), belibaju.getTxtDetail());
-//	}
+	@When("Customer melakukan pembayaran produk")
+	public void customer_melakukan_pembayaran_produk() {
+		beliBaju.bayar(configurationProperties.getPorm());
+		
+	}
+	
+	@Then("Customer berhasil melakukan pembayaran produk")
+	public void customer_berhasil_melakukan_pembayaran_produk() {
+		assertEquals(configurationProperties.getTxtDetail(), beliBaju.getTxtDetail());
+	}
 	
 	public static void scroll(WebDriver driver) {
 		JavascriptExecutor js = (JavascriptExecutor)driver;
